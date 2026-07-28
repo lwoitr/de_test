@@ -1,0 +1,1 @@
+OPTIMIZE TABLE de_test.people FINAL;
