@@ -1,27 +1,35 @@
-1. Поднять ClickHouse
-bash
-docker compose up -d
+#### 1. Поднять ClickHouse
 
-2. Установить зависимости
-bash
+```bash
+docker compose up -d
+```
+
+#### 2. Установить зависимости
+
+```bash
 python -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
+```
 
-3. Загрузить данные
-bash
+#### 3. Загрузить данные
+
+```bash
 python getreq.py
+```
 
-4. Дедупликация 
-bash
+#### 4. Дедупликация
+
+```bash
 docker exec -it clickhouse clickhouse-client --user admin99 --password 12345f \
   --queries-file scripts/optimize.sql
+```
 
-5. dbt
+#### 5. dbt
 
-Если нужен profiles.yml: 
+Если нужен `profiles.yml`:
 
-yaml
+```yaml
 # ~/.dbt/profiles.yml
 de_test_dbt:
   target: dev
@@ -34,9 +42,11 @@ de_test_dbt:
       user: admin99
       password: 12345f
       secure: False
+```
 
-запуск
-bash
+Запуск:
+
+```bash
 cd de_test_dbt
-dbt run     
-
+dbt run
+```
